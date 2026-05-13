@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI FIR Generator - CYBERHAWK AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <site-navbar></site-navbar>
+
+    <main class="container py-5">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center animate__animated animate__fadeInDown">
+                <h1 class="display-4 brand-font text-white"><span class="text-neon-purple">Smart FIR</span> Generator</h1>
+                <p class="lead text-secondary">Instantly generate legally sound, professionally drafted cybercrime complaints ready for submission to the National Cyber Crime Reporting Portal or local police.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Form Section -->
+            <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                <div class="glass-panel p-4 h-100 border-neon-purple">
+                    <h4 class="brand-font text-white mb-4"><i class="fa-solid fa-file-pen text-neon-purple"></i> Incident Details</h4>
+                    <form id="firForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small">Full Name</label>
+                                <input type="text" class="form-control" id="compName" placeholder="John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small">Incident Date</label>
+                                <input type="date" class="form-control" id="compDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small">Incident Type</label>
+                                <select class="form-select" id="compType" required>
+                                    <option value="" selected disabled>Select Type...</option>
+                                    <option value="Financial Fraud (UPI/Bank)">Financial Fraud (UPI/Bank)</option>
+                                    <option value="Social Media Hacking">Social Media Hacking</option>
+                                    <option value="Phishing/Vishing">Phishing / Fake Call</option>
+                                    <option value="Cyber Bullying">Cyber Bullying / Harassment</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small">Fraud Amount (if any)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-transparent border-secondary text-neon-purple">₹</span>
+                                    <input type="number" class="form-control border-start-0 ps-0" id="compAmount" placeholder="0.00">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-secondary small">Brief Description of the Event</label>
+                                <textarea class="form-control" id="compDesc" rows="4" placeholder="Briefly describe what happened, e.g., 'Received a call from a person claiming to be a bank official...'" required></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-neon-purple w-100 py-3 fs-5" id="generateBtn">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Legal Draft
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="col-lg-6 animate__animated animate__fadeInRight">
+                <div class="glass-panel p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="brand-font text-white mb-0"><i class="fa-solid fa-file-lines text-secondary"></i> Draft Preview</h4>
+                        <button class="btn btn-outline-neon btn-sm disabled" id="downloadBtn"><i class="fa-solid fa-download"></i> PDF</button>
+                    </div>
+
+                    <div class="flex-grow-1 bg-dark rounded p-4 border border-secondary position-relative overflow-hidden" id="previewArea" style="font-family: 'Times New Roman', Times, serif; color: #dcdcdc;">
+                        <!-- Loading Overlay -->
+                        <div id="generatingOverlay" class="position-absolute top-0 start-0 w-100 h-100 d-none flex-column align-items-center justify-content-center" style="background: rgba(5,5,8,0.9); z-index: 10;">
+                            <div class="spinner-grow text-neon-purple mb-3" role="status"></div>
+                            <h5 class="text-neon-purple brand-font">Structuring Legal Complaint...</h5>
+                        </div>
+
+                        <!-- Initial State -->
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center text-center opacity-50" id="draftEmptyState">
+                            <i class="fa-solid fa-file-signature fs-1 mb-3"></i>
+                            <p>Fill the form and generate to see the drafted FIR here.</p>
+                        </div>
+
+                        <!-- Draft Content -->
+                        <div id="draftContent" class="d-none small" style="white-space: pre-wrap; line-height: 1.6;">
+To,
+The Officer-In-Charge,
+Cyber Crime Police Station,
+[City/District]
+
+Date: <span id="outDate"></span>
+
+Subject: First Information Report (FIR) regarding <span id="outType" class="fw-bold"></span> and cheating of Rs. <span id="outAmount"></span>.
+
+Respected Sir/Madam,
+
+I, <span id="outName" class="fw-bold"></span>, residing at [Your Address], wish to formally register a complaint regarding a cybercrime incident that occurred on <span id="outIncDate"></span>.
+
+The details of the incident are as follows:
+<span id="outDesc"></span>
+
+As a result of this fraudulent activity, I have suffered a financial loss amounting to Rs. <span id="outAmount2"></span>. 
+
+I request you to kindly register an FIR under relevant sections of the Information Technology Act, 2000 and the Indian Penal Code (IPC), and initiate an immediate investigation to apprehend the culprits and recover the lost amount.
+
+I have attached all relevant screenshots, transaction details, and bank statements for your reference.
+
+Thanking you,
+Yours faithfully,
+
+<span id="outName2"></span>
+[Your Contact Number]
+[Your Email ID]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="backend/services.js"></script>
+    <script src="frontend/firGeneratorPage.js"></script>
+</body>
+</html>

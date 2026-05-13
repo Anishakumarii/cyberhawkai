@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@ibm-cloud/cloudant": "^0.12.19",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "ibm-cloud-sdk-core": "^5.4.15",
+    "ibmcloud-appid": "^7.0.1",
+    "passport": "^0.7.0"
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake URL Checker - CYBERHAWK AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <site-navbar></site-navbar>
+
+    <main class="container py-5">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center animate__animated animate__fadeInDown">
+                <h1 class="display-4 brand-font text-white"><span class="text-neon">URL Threat</span> Checker</h1>
+                <p class="lead text-secondary">Verify the safety of any link before clicking. Our advanced engine scans for malware, phishing attempts, and poor domain reputation.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Search Bar -->
+                <div class="glass-panel p-4 mb-5 animate__animated animate__zoomIn">
+                    <form id="urlForm" class="d-flex flex-column flex-md-row gap-3">
+                        <div class="input-group input-group-lg flex-grow-1">
+                            <span class="input-group-text bg-transparent border-secondary text-neon"><i class="fa-solid fa-link"></i></span>
+                            <input type="url" class="form-control border-start-0 ps-0 text-white" id="urlInput" placeholder="https://example.com" required style="background: rgba(0,0,0,0.2);">
+                        </div>
+                        <button type="submit" class="btn btn-neon px-4 fw-bold" id="checkBtn">
+                            <i class="fa-solid fa-shield-halved"></i> Check URL
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Section -->
+                <div id="urlResults" class="d-none animate__animated animate__fadeInUp">
+                    <!-- Progress Bar (Simulation) -->
+                    <div id="scanProgress" class="mb-4">
+                        <p class="text-secondary small mb-1 brand-font text-uppercase text-center">Scanning target domain...</p>
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-neon" id="progressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div id="resultDetails" class="d-none">
+                        <div class="glass-panel p-4 text-center border-danger position-relative overflow-hidden mb-4" id="mainStatusCard">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-danger opacity-10" style="z-index: 0;"></div>
+                            <div class="position-relative" style="z-index: 1;">
+                                <div class="fs-1 text-danger mb-2 glow-animation" id="statusIcon"><i class="fa-solid fa-skull-crossbones"></i></div>
+                                <h2 class="brand-font text-white mb-0" id="statusText">UNSAFE WEBSITE DETECTED</h2>
+                                <p class="text-secondary mt-2 mb-0 font-monospace" id="scannedUrl">http://suspicious-login-update.com</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="glass-panel p-3 h-100">
+                                    <h6 class="text-secondary small text-uppercase mb-3"><i class="fa-solid fa-chart-pie me-2"></i> Threat Analysis</h6>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-white small">Malware</span>
+                                        <span class="badge bg-danger">Detected</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-white small">Phishing</span>
+                                        <span class="badge bg-danger">High Probability</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-white small">Spam</span>
+                                        <span class="badge bg-success">Clean</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-white small">SSL Certificate</span>
+                                        <span class="badge bg-warning text-dark">Invalid</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="glass-panel p-3 h-100 border-neon-purple">
+                                    <h6 class="text-secondary small text-uppercase mb-3"><i class="fa-solid fa-globe me-2"></i> Domain Info</h6>
+                                    <p class="small text-white mb-1"><span class="text-secondary">IP Address:</span> 192.168.x.x</p>
+                                    <p class="small text-white mb-1"><span class="text-secondary">Registered:</span> 2 days ago <span class="text-danger">(Suspicious)</span></p>
+                                    <p class="small text-white mb-1"><span class="text-secondary">Location:</span> Unknown</p>
+                                    <div class="mt-3">
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar bg-danger" style="width: 95%" data-bs-toggle="tooltip" title="Risk Score: 95/100"></div>
+                                        </div>
+                                        <div class="text-center mt-1 small text-secondary">Risk Score: 95/100</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="backend/services.js"></script>
+    <script src="frontend/urlCheckerPage.js"></script>
+</body>
+</html>

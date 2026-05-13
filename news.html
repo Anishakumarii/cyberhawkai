@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybercrime News - CYBERHAWK AI</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <site-navbar></site-navbar>
+
+    <main class="container py-5">
+
+        <div class="row mb-5 align-items-end">
+
+            <div class="col-lg-8 animate__animated animate__fadeInLeft">
+
+                <h1 class="display-4 brand-font text-white mb-2">
+                    Cyber <span class="text-neon-purple">Threat Intel</span>
+                </h1>
+
+                <p class="lead text-secondary mb-0">
+                    Stay informed with real-time news, trending scam alerts, and cybersecurity awareness tips.
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0 animate__animated animate__fadeInRight">
+
+                <div class="input-group">
+
+                    <input type="text"
+                    class="form-control bg-transparent border-secondary text-white"
+                    placeholder="Search news...">
+
+                    <button class="btn btn-outline-neon-purple" type="button">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Main News Area -->
+            <div class="col-lg-8">
+
+                <!-- Trending Headline -->
+                <div class="glass-panel p-0 overflow-hidden mb-4 border-danger animate__animated animate__fadeInUp">
+
+                    <div class="row g-0">
+
+                        <div class="col-md-5">
+
+                            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Cybercrime"
+                            class="img-fluid h-100 object-fit-cover"
+                            style="min-height:250px;">
+
+                        </div>
+
+                        <div class="col-md-7">
+
+                            <div class="p-4 d-flex flex-column h-100 justify-content-center position-relative">
+
+                                <span class="badge bg-danger position-absolute top-0 end-0 m-3 pulseGlow">
+                                    LIVE
+                                </span>
+
+                                <div class="text-neon small mb-2">
+                                    <i class="fa-regular fa-clock"></i>
+                                    Real-Time Global Cybersecurity Updates
+                                </div>
+
+                                <h3 class="brand-font text-white">
+                                    Live Cybercrime Intelligence & Threat Monitoring
+                                </h3>
+
+                                <p class="text-secondary small">
+                                    Track the latest hacking incidents, phishing attacks,
+                                    ransomware alerts, fraud trends, and cybersecurity
+                                    updates happening across the world in real-time.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Dynamic News Grid -->
+                <div id="newsContainer"
+                class="row g-4 animate__animated animate__fadeInUp"
+                style="animation-delay:0.2s;">
+
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4 animate__animated animate__fadeInRight"
+            style="animation-delay:0.4s;">
+
+                <div class="glass-panel p-4 mb-4 border-neon">
+
+                    <h5 class="brand-font text-white mb-3">
+                        <i class="fa-solid fa-shield-cat text-neon"></i>
+                        Awareness Tips
+                    </h5>
+
+                    <ul class="list-unstyled mb-0">
+
+                        <li class="mb-3 border-bottom border-secondary pb-3">
+
+                            <h6 class="text-white small mb-1">
+                                Use Strong Passwords
+                            </h6>
+
+                            <p class="text-secondary small mb-0">
+                                Create strong passwords with symbols,
+                                numbers, and avoid reusing them.
+                            </p>
+
+                        </li>
+
+                        <li class="mb-3 border-bottom border-secondary pb-3">
+
+                            <h6 class="text-white small mb-1">
+                                Enable 2FA
+                            </h6>
+
+                            <p class="text-secondary small mb-0">
+                                Use two-factor authentication for banking,
+                                email, and social media accounts.
+                            </p>
+
+                        </li>
+
+                        <li>
+
+                            <h6 class="text-white small mb-1">
+                                Avoid Suspicious Links
+                            </h6>
+
+                            <p class="text-secondary small mb-0">
+                                Never click unknown links received through
+                                SMS, email, or WhatsApp.
+                            </p>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="glass-panel p-4 text-center"
+                style="background:rgba(176,38,255,0.15); border:1px solid rgba(176,38,255,0.3);">
+
+                    <i class="fa-solid fa-envelope-open-text fs-1 mb-2 text-neon-purple"></i>
+
+                    <h5 class="brand-font text-white">
+                        Cyber Alerts
+                    </h5>
+
+                    <p class="text-secondary small">
+                        Stay updated with latest cybercrime alerts
+                        and global cybersecurity warnings.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/components.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+
+    const apiKey = "90c911ac40bd4abe916283d1b3b57b7c";
+
+    async function fetchCyberNews() {
+
+        const url =
+        `https://newsapi.org/v2/everything?q=cybercrime OR cybersecurity OR hacking&language=en&sortBy=publishedAt&pageSize=6&apiKey=${apiKey}`;
+
+        try {
+
+            const response = await fetch(url);
+
+            const data = await response.json();
+
+            const container =
+            document.getElementById("newsContainer");
+
+            container.innerHTML = "";
+
+            data.articles.forEach(article => {
+
+                container.innerHTML += `
+
+                <div class="col-md-6">
+
+                    <div class="glass-panel p-3 h-100">
+
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/400'}"
+                        class="img-fluid rounded mb-3 w-100"
+                        style="height:150px; object-fit:cover;">
+
+                        <h5 class="brand-font text-white">
+                            ${article.title}
+                        </h5>
+
+                        <p class="text-secondary small">
+                            ${article.description || 'Cybersecurity update'}
+                        </p>
+
+                        <a href="${article.url}"
+                        target="_blank"
+                        class="text-neon text-decoration-none small">
+
+                            Read More
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                `;
+            });
+
+        } catch (error) {
+
+            console.log("News fetch error:", error);
+
+        }
+    }
+
+    fetchCyberNews();
+
+    </script>
+
+</body>
+</html>
