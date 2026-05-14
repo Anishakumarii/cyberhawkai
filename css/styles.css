@@ -217,7 +217,34 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     transition: opacity var(--transition-fast);
 }
 
-.navbar-brand:hover { opacity: 0.85; }
+.navbar-brand:hover { opacity: 1; }
+
+.navbar-logo {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    transition: all var(--transition-smooth);
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.2));
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: scale(1.08) rotate(-2deg);
+    filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.9));
+}
+
+.footer-logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+    transition: all var(--transition-smooth);
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.7));
+}
+
 
 .brand-shield-icon {
     width: 32px;

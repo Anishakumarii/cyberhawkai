@@ -7,8 +7,8 @@ class SiteNavbar extends HTMLElement {
         this.innerHTML = `
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
                 <div class="container">
-                    <a class="navbar-brand text-neon brand-font fw-bold d-flex align-items-center" href="index.html">
-                        <img src="assets/logo.png" alt="Logo" width="40" height="40" class="me-2" style="object-fit: contain;"> CYBERHAWK AI
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <img src="assets/logo.png" alt="CYBERHAWK AI" class="navbar-logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
@@ -58,8 +58,8 @@ class SiteFooter extends HTMLElement {
                 <div class="container">
                     <div class="row gy-4">
                         <div class="col-lg-4 col-md-6">
-                            <h5 class="text-neon brand-font mb-3 d-flex align-items-center">
-                                <img src="assets/logo.png" alt="Logo" width="30" height="30" class="me-2" style="object-fit: contain;"> CYBERHAWK AI
+                            <h5 class="mb-3 d-flex align-items-center">
+                                <img src="assets/logo.png" alt="CYBERHAWK AI" class="footer-logo">
                             </h5>
                             <p class="text-secondary">AI-Powered Cybercrime & Legal Advisory Platform. Empowering users against digital threats with advanced AI analysis and legal assistance.</p>
                             <div class="d-flex gap-3 mt-3">
